@@ -1,0 +1,51 @@
+compareMagnitudes int : (cdouble a,cdouble b) {
+    choice (a*conjugate(a) eq b*conjugate(b)) {
+        return 1;
+    } default {
+        return 0;
+    }
+}
+
+partition int :(cdouble arr[], int low, int high) {
+    cdouble pivot = arr[high];
+    int i = low - 1;
+
+    iter (int j = low; j <= high-1; j++) {
+        choice (compareMagnitudes(arr[j], pivot)) {
+            i++;
+            cdouble t=arr[i];
+            arr[i]=arr[j];
+            arr[j]=t;
+        }
+    }
+
+    cdouble t=arr[i + 1];
+    arr[i + 1]=arr[high];
+    arr[high]=t;
+    return i + 1;
+}
+
+quicksort void : (cdouble arr[], int low, int high) {
+    choice (low < high) {
+        int pivotIndex = partition(arr, low, high);
+
+        quicksort(arr, low, pivotIndex - 1);
+        quicksort(arr, pivotIndex + 1, high);
+    }
+}
+
+main int : () {
+    // Example usage of your DSL-like code
+    cdouble a = rotate((1, 2), (3, 4), 5);
+    cdouble b = (3, 4);
+    cdouble c = (5, 6);
+    int n = 99;
+    cdouble arr[5 * 5 * (99 + n - n + 0)];
+    arr[0]=a;
+    arr[1]=b;
+    arr[2]=c;
+    // Perform quicksort on the array based on magnitudes
+    quicksort(arr, 0,99);
+
+    return 0;
+}

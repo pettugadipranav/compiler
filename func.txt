@@ -1,0 +1,23 @@
+print --done
+add --done
+sub --done
+mul --done
+div --done
+comparasions --done
+pow/sqrt (demovire theorem) 
+polar form -> normal form --done
+log --done
+conjugate --done
+mod --done
+argument/amplitude --done
+omega
+angle b/w two complex numbers
+traingle functions when given three points{
+    like:
+    centroid(z1,z2,z3),
+    orthocentre(z1,z2,z3),
+    area(z1,z2,z3),
+    .....
+}
+extract real and imaginary part of complex --real complex
+plotting complex numbers--optional

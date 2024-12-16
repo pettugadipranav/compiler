@@ -1,0 +1,15 @@
+y.tab.c: In function ‘yyparse’:
+y.tab.c:1693:16: warning: implicit declaration of function ‘yylex’ [-Wimplicit-function-declaration]
+ 1693 |       yychar = yylex ();
+      |                ^~~~~
+y.tab.c:1840:7: warning: implicit declaration of function ‘yyerror’; did you mean ‘yyerrok’? [-Wimplicit-function-declaration]
+ 1840 |       yyerror (YY_("syntax error"));
+      |       ^~~~~~~
+      |       yyerrok
+parser.y: At top level:
+parser.y:402:6: warning: conflicting types for ‘yyerror’; have ‘void(char *)’
+  402 | void yyerror(char * s)
+      |      ^~~~~~~
+y.tab.c:1840:7: note: previous implicit declaration of ‘yyerror’ with type ‘void(char *)’
+ 1840 |       yyerror (YY_("syntax error"));
+      |       ^~~~~~~

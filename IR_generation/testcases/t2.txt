@@ -1,0 +1,20 @@
+main int : () {
+            cint a(3,4);
+            cint b(5,5),c(-101,100);
+            cdouble centroid,circumcenter,orthocenter;
+            centroid = get_centroid(a,b,c);
+            cprint(centroid);
+            circumcenter= get_circumcenter(a,b,c);
+            cprint(circumcenter);
+            orthocenter = get_orthocenter(a,b,c);
+            cprint(orthocenter);
+            choice (dist(centroid,circumcenter) eq dist(orthocenter,centroid)*2){
+                //cprint(1); //ratio verified
+            }
+            default {
+                //cprint(-1);
+            }
+            //circum centriod orthocenter
+            //      2        1
+            return 0;
+        }

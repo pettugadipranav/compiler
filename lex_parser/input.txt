@@ -1,0 +1,26 @@
+my_dist cdouble : (cdouble x1) {
+    return pow(pow(a,2)+pow(b,pow(4,0.5)),0.5);
+}
+my_incentre cdouble[] : (cdouble A[],cdouble B[],cdouble C[]) {
+    cdouble center[2];
+    double c=my_dist(A[0],A[1],B[0],B[1]);
+    double a=my_dist(C[0],C[1],B[0],B[1]);
+    double b=my_dist(A[0],A[1],C[0],C[1]);
+    center[0]=(a*A[0]+b*B[0]+c*C[00])/(a+b+c);
+    center[1]=(a*A[1]+b*B[1]+c*C[01])/(a+b+c);
+    return center;
+}
+main int : () {
+    // formula ax1+bx2+cx3/a+b+c
+    // formula ax1+bx2+cx3/a+b+c
+    cint A[2];
+    cint B(2,3)[2];
+    cdouble C[2];
+    choice (my_incentre(A,B,C) eq get_incentre(A,B,C)) {
+        print("Yay! it worked");
+    }
+    default {
+        print("Something wrong!!!!");
+    }
+    
+}

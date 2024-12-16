@@ -1,0 +1,13 @@
+main int : () {
+    cint a;
+    a=(3,4);
+    cint b;
+    b=(5,6);
+    double d;
+    int c;
+    c=5+7;
+    cdouble roots[2];
+    roots[0]=(-1+complex_pow(b*b-4*a*c,1/2))/(2*a);
+    roots[1]=(-b-complex_pow(b*b-4*a*c,1/2))/(2*a);
+    return 0;
+}

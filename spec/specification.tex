@@ -1,0 +1,615 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\renewcommand{\contentsname}{INDEX}
+\usepackage{longtable,multirow,fancyvrb}
+\usepackage{hyperref}
+\usepackage{mathtools}
+% \usepackage{fontspec}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\usepackage[shortlabels]{enumitem}
+\newcommand{\solution}{oindent \textbf{Solution: }}
+\usepackage{amsfonts,amssymb,amsmath,float,graphicx,enumitem,titling}
+\setlength{\droptitle}{-5em}   % This is your set screw
+\title{Compilers-2\\Group-12}
+\date{}
+\begin{document}
+% fix error in this document?
+
+\begin{figure}[H]
+    \centering 
+    \includegraphics[scale=0.1]{./logo.png}
+    \label{fig:my_label}
+\end{figure}
+\vspace{1cm}
+\begin{center}
+    {\fontsize{35}{30}\selectfont Compilers-II}\\
+    \vspace{2cm}
+    {\fontsize{35}{30}\selectfont CPlex}\\
+    \vspace{0.5cm}
+    {\fontsize{25}{30}\selectfont language-specification}\\
+    \vspace{1cm}
+    {\fontsize{30}{30}\selectfont By Group-12}\\
+\end{center}
+\pagebreak
+\begin{center}
+    \tableofcontents
+\end{center}
+\pagebreak
+\section{Introduction}
+\subsection{Motivation}
+This language's inspiration stems from two distinct sources. For many years, compilers were responsible for converting high-level code into binary or assembly code. This put a program's effectiveness wholly dependent on the programmer's coding abilities. Compilers shouldn't be left behind as AI has recently advanced in all industries. More than only translators must be included in the compilers. Many studies are being conducted on the subject everywhere in the world. The more optimizations we do in the compailer, faster we get the output.
+
+                         We took it as an opportunity and we have decided to build a new language called CPlex. CPlex is primarily used for Complex Numbers computations. Complex numbers are mainly used in Electrical Engineering, Signal Processing, Quantum Mechanics, Computer Graphics, Control systems etc. Many scientists make research on the areas mentioned above. This motivates us to build a programming language based on Complex Numbers.
+\subsection{Goal}
+CPlex aims to extend its capabilities to a broader, generalized domain. CPlex offers built-in support for complex numbers, facilitating arithmetic operations like addition, subtraction, multiplication, and division. 
+\section{Data types}
+
+\subsection{Computational}
+\begin{table}[ht]
+\centering
+\renewcommand{\arraystretch}{1.5} % Adjust vertical padding
+\setlength{\tabcolsep}{30pt} % Adjust horizontal padding
+\begin{tabular}{|c|c|}
+\hline
+\bfseries Datatype & \bfseries Example \\
+\hline
+int &  3, 7, 0 etc\\
+\hline
+cint &  3+4i, 6+11i etc\\
+\hline
+double &  3.14, 0 etc \\
+\hline
+cdouble &   3.14+7i, 8+5.5i, 3.14+5.5i etc\\
+
+\hline
+\end{tabular}
+\caption{Data Types Table}
+\end{table}
+\subsection{Non-computational}
+
+\begin{table}[ht]
+\centering
+\renewcommand{\arraystretch}{1.5} % Adjust vertical padding
+\setlength{\tabcolsep}{30pt} % Adjust horizontal padding
+\begin{tabular}{|c|c|}
+\hline
+\bfseries Datatype & \bfseries Example \\
+\hline
+
+\hline
+str &  "hi this compilers project", "", " " etc\\
+\hline
+bin &  0(false) and 1(true)\\
+\hline
+void &  Return type of a function that returns nothing\\
+\hline
+\end{tabular}
+\caption{Data Types Table}
+\end{table}
+
+\section{Operators and expressions}
+\subsection{Precedence - Lowest to Highest}
+\begin{table}[ht]
+\centering
+\renewcommand{\arraystretch}{1.5} % Adjust vertical padding
+\setlength{\tabcolsep}{15pt} % Adjust horizontal padding
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Symbol} & \textbf{Purpose} & \textbf{Associativity} & \textbf{Valid Operands} \\
+\hline
+++ & Increment & right to left & computational datatypes \\
+\hline
+\textbf{- -} & Decrement & right to left & computational datatypes \\
+\hline
+rem & Modulo & left to right & int, float  \\
+\hline
+/ & Division  & left to right & computational datatypes \\
+\hline
+* &  Multiplication & left to right & computational datatypes \\
+\hline
++ &  Addition & left to right & computational datatypes  \\
+\hline
+- &  Subtraction & left to right & computational datatypes \\
+\hline
+eq, neq, <, <=, >=, > & Relational Op & left to right & computational datatypes \\
+\hline
+and, or, neg & Logical Op & left to right & bin \\
+\hline
+= & Assignment Op & right to left & initialise, assignment \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Expressions}
+    \subsubsection{ RHS side of expression:}
+    Arithmatic expression should follow BODMAS rule.
+    For example if we have an expression like a+b*c-d/e then it should be evaluated as b*c first then a+b*c then d/e and then a+b*c-d/e.
+    \subsubsection{ Unary Operators:}
+    \begin{enumerate}
+        \item For int and double datatype the unary operators follows default rule as C language
+        \item For cint, cdouble datatype we can increment as our wish. For Ex for incrementing real part of a complex number a, we write a.r++; 
+        \item For imaginary part of a complex number a we increment as a.i++;
+        \item For incrementing both real and imaginary part of a complex number a we write a++;
+    \end{enumerate}
+
+\section{Lexical specifications}
+
+\subsection{Reserved keywords}
+Reserved keywords are the keywords that have special meaning in the program and can not be used directly as a variable name. The reserved keywords which are used in Cplex are
+
+\begin{table}[h]
+    \centering
+    \renewcommand{\arraystretch}{1.5} % Adjust vertical padding
+    \setlength{\tabcolsep}{10pt} % Adjust horizontal padding
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        STRING & INN\_PROD & ITER & UNTIL \\
+        \hline
+        PRINT & RETURN & REAL & IMG \\
+        \hline
+        POW & POLAR & CONJUGATE & MOD \\
+        \hline
+        ARG & ANGLE & DIST & CPRINT \\
+        \hline
+        ROTATE & CHOICE & ALT & DEFAULT \\
+        \hline
+        GET\_LINE & IS\_TRIANGLE & GET\_CENTROID & GET\_CIRCUMCENTER \\
+        \hline
+        GET\_ORTHOCENTER & GET\_INCENTER & GET\_EXCENTER & GET\_AREA \\ 
+        \hline
+        GET\_PERIMETER & INC & DEC & REAL\_INC \\
+        \hline
+        IMAG\_INC & REAL\_DEC & IMAG\_DEC & PRINT \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\subsection{Identifiers}
+Identifiers are case-sensitive and consist of letters, digits, and underscores. Identifiers must start with a letter, which can be followed by a sequence of letters, digits, and underscores.\\
+
+\textbf{Valid Identifiers:} 
+\begin{verbatim}
+    counter, va_lu_e, MAXIMUM_VALUE, myFunction, x2
+\end{verbatim}
+\textbf{Invalid identifiers:} 
+\begin{verbatim}
+    1stPlace (starts with a digit)
+    float (a reserved keyword)
+    user-name (contains a hyphen, which is not allowed)
+\end{verbatim}
+
+\subsection{Punctuation}
+Punctuation characters are used to separate elements and control program flow. 
+\begin{enumerate}
+    \item \textbf{Semicolon(;):} Every statement should end with semicolon.
+    \item \textbf{Comma(,):} Comma is used to seperate the arguments in function call and in iter loop
+    \item \textbf{Collon(:):} Collon is used to seperate the arguments from return type in function definition.
+    \item \textbf{Double Quotes(" "):} Double quotes are used to define string.
+\end{enumerate}
+
+\subsection{Special symbols}
+Special symbols are characters with specific meanings and purposes within the language. They are used for operators, punctuation, and other syntactical elements.
+\begin{enumerate}
+    \item \textbf{Curly braces (\{ \}):} Curly braces are used to define the scope of the function.
+    \item \textbf{Square braces ([ ]):} Square braces are used to define the array.
+    \item \textbf{Round braces (( )):} Round braces are used to define the arguments in function call and function definition, loops, conditional statements.
+\end{enumerate}
+
+\subsection{Comments}
+Comments are used to provide explanatory notes within the source code. They are not executed by the compiler and are for the benefit of programmers. There are two types of comments Single-line, Multi-line. \\
+
+\begin{BVerbatim}
+     // UNTIL END LINE 
+     /* MULTILINE COMMENT */
+\end{BVerbatim}
+
+\subsection{Whitespace}
+White spaces refer to spaces, tabs, and newline characters that are used for formatting and separating code elements. White spaces are generally ignored by the compiler, and their primary purpose is to enhance code readability.
+\begin{itemize}
+    \item Space (' ')
+    \item Tab (\textbackslash{}t)
+    \item Newline (\textbackslash{}n)
+\end{itemize}
+
+\section{Declarations}
+\subsection{Real:}
+\subsubsection{Declarations without intialization:}
+\begin{enumerate}
+    \item \textbf{int a, b, c;} \\
+        Integers without initialization.a, b,c can be declared without initialization.
+    \item \textbf{double a, b;} \\
+        Decimal numbers without initialization.a, b can be declared without initialization.
+    \end{enumerate}
+\subsubsection{Declarations with intialization:}
+\begin{enumerate}
+    \item  \textbf{int a = 5;}\\
+        Integers with initialization.a can be declared with initializing.
+    \item  \textbf{double c = 5.6;}\\
+        Decimal numbers with initialization.c is assigned to 5.6 .
+\end{enumerate}
+\subsection{Complex:}
+\subsubsection{Declarations without intialization:}
+\begin{enumerate}
+    \item \textbf{cint x, y;}\\
+    Complex numbers with Integers in real and imaginary part.x,y can be initialised later on.
+    \item \textbf{cdouble y, z;} \\
+    Complex numbers with Doubles in real and imaginary part.y,z can be initialised later on.
+\end{enumerate}
+
+\subsubsection{Declarations with intialization:}
+\begin{enumerate}
+    \item \textbf{cint a(3, 4);}\\
+The above statement declares a complex number a = 3 + 4i.
+    \item \textbf{cdouble a(3.5, 4.7);}\\
+The above statement declares a complex number a = 3.5 + 4.7i.
+\end{enumerate}
+\subsubsection{Declarations with intialization only imaginary part:}
+\begin{enumerate}
+    \item \textbf{cint a(3), b(4), c(10);}\\
+Integer type complex numbers.
+The above statements makes declarations as a = 3i, b = 4i, c = 10i.
+    \item \textbf{cdouble c(3.4), d(4.7), e(10.03);} \\
+The above statements makes declarations as c = 3.4i, d = 4.7i, e = 10.03i.
+\end{enumerate}
+\subsection{Arrays:}
+\subsubsection{Declarations for argument:}
+\begin{enumerate}
+    \item \textbf{int a[ ];}\\
+    Integer array without initialization for argument in functions.
+    \item \textbf{double a[ ];}\\
+    Double array without initialization for argument in functions.
+    \item \textbf{cint a[ ];}\\
+    Complex number with integer array without initialization for argument in functions.
+    \item \textbf{cdouble a[ ];}\\
+    Complex number with double array without initialization for argument in functions.
+\end{enumerate}
+\subsubsection{Declarations without intialization:}
+\begin{enumerate}
+    \item \textbf{int a[10];}\\
+    Integer array without initialization.
+    The above statement allocates a with size of 10 where we can declare int datatype numbers.
+    \item \textbf{double d[25]; } \\
+    Double array without declaration.
+    The above statement allocates size of 25 where we can declare double datatype numbers.
+    \item \textbf{cint a[10];}\\
+    Complex number with integer array without initialization.
+    The above statement allocates a with size of 10 where we can declare cint datatype numbers.
+    \item \textbf{cdouble d[25]; } \\
+    Complex number with double array without declaration.
+    The above statement allocates size of 25 where we can declare cdouble datatype numbers.
+\end{enumerate}
+\subsubsection{Declarations with intialization:} 
+\begin{enumerate}
+    \item \textbf{int a(23)[10];} \\
+    Integer array with initialization.
+    The above statement allocates a with size of 10 and are initialized to 23.
+    \item \textbf{double d(3.8)[25]; } \\
+    Double array with declaration.
+    The above statement allocates a with size of 25 and are initialized to 3.8 .
+    \item \textbf{cint a(3)[10];} \\
+    This statement declares an array of size 10 with each value assigned to 3.
+         \item  \textbf{cint a(3, 4)[20];}\\ 
+    This statement declares an array of size 20 with each value assigned to a complex number 3 + 4i. If user wants to declare any complex number other 
+    than 3 + 4i, then he/she has to declare manually below the declaration part.
+    \item \textbf{cdouble a(3.4)[10];} \\
+    This statement declares an array of size of 10 with each value assigned to 3.4 .
+    \item \textbf{cdouble a(3.4, 6.93)[5];} \\
+    This statement declares an array of size of 5 with each value assigned to 3.4 + 6.93i. 
+\end{enumerate}
+
+\subsection{Function Declaration SYNTAX:}
+    \begin{BVerbatim} 
+FUNC_NAME RETURN_TYPE : (DTYPE VAR1, DTYPE VAR2)  {
+   /*
+   CODE TO BE WRITTEN HERE
+   */
+}
+    \end{BVerbatim}
+
+First we declare function name then we mention return type and then we have a Colon after that we declare arguments separated by comma. After the parenthesis we write as usual code. Parenthesis are completely optional for the arguement declaration.
+
+
+\section{Statements}
+
+% \textbf{Examples}
+
+
+
+\subsection{Intializations / Assignments}
+\begin{itemize}
+    \item Every intialization or assignment statement in our language ends with ";".
+    \item Every statement has an equal to symbol(=) in which LHS contains variable and RHS contains  value or return value or expression . It also contains a only a variable in RHS it means we are assigning RHS variable value to LHS variable  \\
+    \textbf{Examples:}
+    \item a = 2;
+    \item b = func(a);
+    \item c = a+b;
+    \item d = c;
+\end{itemize}
+
+
+\subsection{Function call}
+\begin{itemize}
+    \item A function cal can be inbuit function call or user function call.
+    \item Every function call statement in our language ends with ";".
+   \item A function call can be done by writing the function name  followed by parenthesis, and in parenthesis we write arguments in the same order as that of in the function declaration. The type of arguments should be same as in function declaration\\
+   \textbf{Examples:}
+   \item func(a,b,c);
+   \item get\_centriod(a,b,c);
+   
+\end{itemize}
+\subsection{Return Type}
+\begin{itemize}
+    \item Return statement must be written in a function scope.
+    \item Every return statement in our language ends with ";".
+   \item A return statement contains return word followed by a value or a variable or a expression. The value or variable or expression value should be same as return type of function.\\
+   \textbf{Examples:}
+   \item return 2;
+   \item return a;
+   \item return a+b;
+   
+\end{itemize}
+\subsection{Conditionals}
+\subsubsection{\texttt{choice(cond) \{...\} }}
+The conditionals \texttt{choice(cond) \{...\} } is similar to the \texttt{if} statement in C. The condition \texttt{cond} is evaluated and if it is true then the statements inside the curly braces are executed. If the condition is false then the statements inside the curly braces are not executed.
+A sample code snippet is shown below:
+\begin{figure}[H]
+    \label{choice}
+    \centering
+    \begin{BVerbatim}
+        choice(a eq b) {
+            cprint(1);
+        }
+    \end{BVerbatim}
+    \caption{Output for table 'department' and k=10}
+    \end{figure}
+\subsubsection{\texttt{choice(cond) \{...\} default \{\... \} }}
+The conditionals \texttt{choice(cond) \{...\} default \{\... \} } is similar to the \texttt{if-else} statement in C. The condition \texttt{cond} is evaluated and if it is true then the statements inside the first curly braces are executed. If the condition is false then the statements inside the second curly braces are executed.
+A sample code snippet is shown below:
+\begin{figure}[H]
+    \label{choice}
+    \centering
+    \begin{BVerbatim}
+        choice(a eq b) {
+            cprint(1);
+        } default {
+            cprint(0);
+        }
+    \end{BVerbatim}
+    \caption{Output for table 'department' and k=10}
+    \end{figure}
+\subsubsection{\texttt{choice(cond) \{...\} alt(cond) \{...\} default \{\... \} }}
+The conditionals \texttt{choice(cond) \{...\} alt(cond) \{...\} default \{\... \} } is similar to the \texttt{if-else if-else} statement in C. The condition \texttt{cond} is evaluated and if it is true then the statements inside the first curly braces are executed. If the condition is false then the condition \texttt{cond} is evaluated and if it is true then the statements inside the second curly braces are executed. If the condition is false then the statements inside the third curly braces are executed.
+A sample code snippet is shown below:
+\begin{figure}[H]
+    \label{choice}
+    \centering
+    \begin{BVerbatim}
+        choice(a eq b) {
+            cprint(1);
+        } alt(a eq c) {
+            cprint(2);
+        } default {
+            cprint(0);
+        }
+    \end{BVerbatim}
+    \caption{Output for table 'department' and k=10}
+    \end{figure}
+\subsection{Loops}
+\subsubsection{\texttt{iter(cond1;cond2;cond3) \{...\} }}
+The loop \texttt{iter(cond1;cond2;cond3) \{...\} } is similar to the \texttt{for} loop in C. The condition \texttt{cond1} is evaluated and if it is true then the statements inside the curly braces are executed. After the execution of the statements inside the curly braces the condition \texttt{cond2} is evaluated and if it is true then the statements inside the curly braces are executed. This process is repeated until the condition \texttt{cond3} is true.
+A sample code snippet is shown below:
+\begin{figure}[H]
+    \label{iter}
+    \centering
+    \begin{BVerbatim}
+        iter(i=0;i<10;i=i+1) {
+            cprint(i);
+        }
+    \end{BVerbatim}
+    \caption{Output for table 'department' and k=10}
+    \end{figure}
+\subsubsection{\texttt{until(cond) \{...\} }}
+The loop \texttt{until(cond) \{...\} } is similar to the \texttt{while} loop in C. The condition \texttt{cond} is evaluated and if it is true then the statements inside the curly braces are executed. This process is repeated until the condition \texttt{cond} is true.
+A sample code snippet is shown below:
+\begin{figure}[H]
+    \label{until}
+    \centering
+    \begin{BVerbatim}
+        until(i<10) {
+            cprint(i);
+            i=i+1;
+        }
+    \end{BVerbatim}
+    \caption{Output for table 'department' and k=10}
+    \end{figure}
+\section{Built-in functions}
+\subsection{For basic complex number computations:}
+\begin{enumerate}
+    \item \texttt{ real double : (cdouble c)} \\
+    \textbf{Description:} This function returns the real part of complex number \texttt{c}.\\
+    \textbf{Input type:} Anything except string. \\
+    \textbf{Return type:} double.
+    \item \texttt{img double : (cdouble c)} \\
+    \textbf{Description:} This function returns the imaginary part of complex number \texttt{c}.\\
+    \textbf{Input type:} Anything except string. \\
+    \textbf{Return type:} double.
+    \item \texttt{ pow cdouble : (cdouble base,double exponent)} \\
+    \textbf{Description:} This function returns the complex number ${base}^{exponent}$. This is done by using De-Moivre's formula. This can also be used for real numbers too.\\
+    \textbf{Input type:} Base can't be string, Exxponent must be int or double. \\
+    \textbf{Return type:} cdouble.
+    \item \texttt{ polar void : (cdouble c)} \\
+    \textbf{Description:} This function prints the polar form of a complex number \texttt{c}. Given a complex number $c=a+ib$ the polar form looks $c=r(e^{i \theta })$ (Where $\theta$ is the argument of the complex number and $r$ is the modulus of the complex number).\\
+    \textbf{Input type:} Anything except string. \\
+    \textbf{Return type:} void(just prints the polar form).
+    \item \texttt{conjugate cdouble : (cdouble c)} \\ 
+    \textbf{Description:} This function returns the conjugate of the complex number \texttt{c}. Given a complex number $c=a+ib$ the conjugate looks like $c=a-ib$.\\
+    \textbf{Input type:} Anything except string. \\
+    \textbf{Return type:} cdouble.
+    \item \texttt{mod double : (cdouble c)} \\ 
+    \textbf{Description:} This function returns the modulus of the complex number \texttt{c}. Given a complex number $c=a+ib$ the modulus looks like $c=\sqrt{a^2+b^2}$. \\
+    \textbf{Input type:} Anything except string. \\
+    \textbf{Return type:} double.
+    \item \texttt{arg double : (cdouble c)} \\ 
+    \textbf{Description:} This function returns the argument of the complex number \texttt{c}. Given a complex number $c=a+ib$ the argument looks like $c=\tan^{-1}(\frac{b}{a})$. \\
+    \textbf{Input type:} Anything except string. \\
+    \textbf{Return type:} double.
+    \item \texttt{angle double : (cdouble c1,cdouble c2)} \\
+    \textbf{Description:} This function returns the angle between the complex numbers \texttt{c1} and \texttt{c2} with respect to origin. Given two complex numbers $c_1=a_1+b_1i$ and $c_2=a_2+b_2i$ the angle between them looks like $c=\tan^{-1}(\frac{b_2-b_1}{a_2-a_1})$.\\
+    \textbf{Input type:} Anything except string. \\
+    \textbf{Return type:} double.
+    \item \texttt{dist double : (cdouble c1,cdouble c2)} \\
+    \textbf{Description:} This function returns the distance between the complex numbers \texttt{c1} and \texttt{c2}. Given two complex numbers $c_1=a_1+b_1i$ and $c_2=a_2+b_2i$ the distance between them looks like $c=\sqrt{(a_2-a_1)^2+(b_2-b_1)^2}$.\\
+    \textbf{Input type:} Anything except string. \\
+    \textbf{Return type:} double.
+    \item \texttt{ cprint void: (cdouble c)} \\
+    \textbf{Description:} This function prints the complex number \texttt{c} in the form $a+ib$.\\
+    \textbf{Input type:} Anything except string. \\
+    \textbf{Return type:} void.
+
+    \item \texttt{ print void: ([[strings/exps]+","]*)} \\
+    \textbf{Description:} This function is similar to that of cout of C++ where the print function prints everything in its arguments separated by comma.\\
+    \textbf{Input type:} Comma separated arguments( anything) \\
+    \textbf{Return type:} void.
+\end{enumerate}
+\subsection{For geometry related:}
+\begin{enumerate}
+    \item \texttt{rotate cdouble : (cdouble c,cdouble origin,double angle)} \\ 
+    \textbf{Description:} This function rotates the complex number \texttt{c} by an angle \texttt{angle} about the \texttt{origin} point and returns. The rotation is done in the counter-clockwise direction. \\
+    \textbf{Input type:} \texttt{c}, \texttt{origin} can be anything except string, \texttt{angle} must be int or double. \\
+    \textbf{Return type:} cdouble.
+    \item \texttt{dist double : (cdouble c1,cdouble c2)} \\
+    \textbf{Description:} This function returns the distance between the complex numbers \texttt{c1} and \texttt{c2}. Given two complex numbers $c_1=a_1+b_1i$ and $c_2=a_2+b_2i$ the distance between them looks like $c=\sqrt{(a_2-a_1)^2+(b_2-b_1)^2}$.\\
+    \textbf{Input type:} Anything except string. \\
+    \textbf{Return type:} double.
+    \item \texttt{get\_line void : (cdouble c1,cdouble c2)} \\ 
+    \textbf{Description:} Given two complex numbers $c_1=a_1+b_1i$ and $c_2=a_2+b_2i$ this function prints the line $ax+by+c=0$ passing through the points $c_1$ and $c_2$.\\
+    \textbf{Input type:} Anything except string. \\
+    \textbf{Return type:} void.
+    \item \texttt{is\_traingle bin : (cdouble c1,cdouble c2,cdouble c3)} \\ 
+    \textbf{Description:} Given three complex numbers $c_1=a_1+b_1i$, $c_2=a_2+b_2i$ and $c_3=a_3+b_3i$ this function returns true if the points $c_1$,$c_2$ and $c_3$ form a triangle else false.\\
+    \textbf{Input type:} Anything except string. \\
+    \textbf{Return type:} bin.
+    \item \texttt{ get\_centroid cdouble : (cdouble c1,cdouble c2,cdouble c3)} \\
+    \textbf{Description:} Given three complex numbers $c_1=a_1+b_1i$, $c_2=a_2+b_2i$ and $c_3=a_3+b_3i$ this function returns the centroid of the triangle formed by(if exists) the points $c_1$,$c_2$ and $c_3$.\\
+    \textbf{Input type:} Anything except string. \\
+    \textbf{Return type:} cdouble.
+    \item \texttt{get\_circumcenter cdouble : (cdouble c1,cdouble c2,cdouble c3)} \\
+    \textbf{Description:} Given three complex numbers $c_1=a_1+b_1i$, $c_2=a_2+b_2i$ and $c_3=a_3+b_3i$ this function returns the circumcenter of the triangle formed by(if exists) the points $c_1$,$c_2$ and $c_3$.\\
+    \textbf{Input type:} Anything except string. \\
+    \textbf{Return type:} cdouble.
+    \item \texttt{get\_orthocenter cdouble : (cdouble c1,cdouble c2,cdouble c3)} \\
+    \textbf{Description:} Given three complex numbers $c_1=a_1+b_1i$, $c_2=a_2+b_2i$ and $c_3=a_3+b_3i$ this function returns the orthocenter of the triangle formed by(if exists) the points $c_1$,$c_2$ and $c_3$.\\
+    \textbf{Input type:} Anything except string. \\
+    \textbf{Return type:} cdouble.
+    \item \texttt{get\_incenter cdouble : (cdouble c1,cdouble c2,cdouble c3)} \\
+    \textbf{Description:} Given three complex numbers $c_1=a_1+b_1i$, $c_2=a_2+b_2i$ and $c_3=a_3+b_3i$ this function returns the incenter of the triangle formed by(if exists) the points $c_1$,$c_2$ and $c_3$.\\
+    \textbf{Input type:} Anything except string. \\
+    \textbf{Return type:} cdouble.
+    \item \texttt{get\_excenter cdouble : (cdouble c1,cdouble c2,cdouble c3)} \\ 
+    \textbf{Description:} Given three complex numbers $c_1=a_1+b_1i$, $c_2=a_2+b_2i$ and $c_3=a_3+b_3i$ this function returns the excenter of the triangle formed by(if exists) the points $c_1$,$c_2$ and $c_3$.\\
+    \textbf{Input type:} Anything except string. \\
+    \textbf{Return type:} cdouble.
+    \item \texttt{ get\_area double : (cdouble c1,cdouble c2,cdouble c3)} \\ 
+    \textbf{Description:} Given three complex numbers $c_1=a_1+b_1i$, $c_2=a_2+b_2i$ and $c_3=a_3+b_3i$ this function returns the area of the triangle formed by(if exists) the points $c_1$,$c_2$ and $c_3$.\\
+    \textbf{Input type:} Anything except string. \\
+    \textbf{Return type:} double.
+    \item \texttt{get\_perimeter double : (cdouble c1,cdouble c2,cdouble c3)} \\ 
+    \textbf{Description:} Given three complex numbers $c_1=a_1+b_1i$, $c_2=a_2+b_2i$ and $c_3=a_3+b_3i$ this function returns the perimeter of the triangle formed by(if exists) the points $c_1$,$c_2$ and $c_3$.\\
+    \textbf{Input type:} Anything except string. \\
+    \textbf{Return type:} double.
+\end{enumerate}
+
+\section{Example programs}
+\subsection{Example program 1:}
+\begin{figure}[H]
+    \label{ex_program_1}
+    \centering
+    \begin{BVerbatim}
+        my_centroid cdouble : (cdouble c1,cdouble c2,cdouble c3)  {
+            cdouble centroid;
+            centroid = (c1+c2+c3)/3;
+            return centroid;
+        }
+        main int :  {
+            cint a(3,4);
+            cint b(5,5),c(-101,100);
+            cdouble centroid;
+            centroid = my_centroid(a,b,c);
+            choice(centroid eq get_centroid(a,b,c)) {
+                cprint(centroid);
+            } 
+            default {
+                cprint(is_triangle(a,b,c));
+            }
+            return 0;
+}
+    \end{BVerbatim}
+    % \caption{Output for table 'department' and k=10}
+\end{figure}
+\subsection{Example program 2:}
+\begin{figure}[H]
+    \label{ex_program_2}
+    \centering
+    \begin{BVerbatim}
+        main int :  {
+            cint a(3,4);
+            cint b(5,5),c(-101,100);
+            cdouble centroid;
+            centriod = get_centroid(a,b,c);
+            cprint(centroid);
+            circumcente= get_circumcenter(a,b,c);
+            cprint(circumcenter);
+            orthocenter = get_orthocenter(a,b,c);
+            cprint(orthocenter);
+            choice (dist(centriod,circumcenter) eq dist(orthocenter,centroid)*2){
+                cprint(1); //ratio verified
+            }
+            default {
+                cprint(-1);
+            }
+            //circum centriod orthocenter
+            //      2        1
+            return 0;
+        }
+    \end{BVerbatim}
+    % \caption{Output for table 'department' and k=10}
+\end{figure}
+\subsection{Example program 3:}
+\begin{figure}[H]
+    \label{ex_program_3}
+    \centering
+    \begin{BVerbatim}
+        my_centroid cdouble[] : (cdouble A[],cdouble B[],cdouble C[]) {
+            couble result[2];
+            result[0] = (pow(A[0],2+pow(4,1/2)-2+1-1-2) + B[0*0] + C[0])/3;
+            result[1] = (A[1] + B[1] + C[1])/3;
+            return result;
+        }
+        main int : (int argc) {
+            cdouble A[2];
+            cdouble B[2];
+            cdouble C[2];
+            A[0] = 1;
+            A[1] = 1;
+            B[0] = 2;
+            B[1] = 2;
+            C[0] = 3;
+            C[1] = 3;
+            cdouble result[2];
+            result = my_centroid(A,B,C);
+            choice (result==get_centroid(A,B,C))
+            {
+                printf("Test passed\n");
+            }
+            else {
+                printf("Test failed\n");
+            }
+            return 0;
+        }
+    \end{BVerbatim}
+    % \caption{Output for table 'department' and k=10}
+\end{figure}
+
+\end{document}

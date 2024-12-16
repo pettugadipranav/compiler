@@ -1,0 +1,16 @@
+// Write a cpp program for fibonacci series using recursion.
+
+fib void : (double a) {
+    choice (a eq 1) {
+        return;
+    }
+    default {
+        //return fib(a-(1,1))+fib(a-(2,2));
+    }
+
+}
+main int :() {
+    int n=1;
+    fib(n);
+    
+}

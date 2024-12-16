@@ -1,0 +1,16 @@
+roots_of_unity cdouble[] :(double n) {
+    int y;
+    cdouble roots[y] ;
+    cdouble PI=(3.14,0);
+    int i;
+    iter (i = 0; i < n; i++) {
+        roots[i] = (real(2 * PI * i / n), img(2 * PI * i / n));
+    }
+    return roots;
+}
+main int :() {
+    double n = 4;
+    cdouble roots[4];
+    roots= roots_of_unity(n);
+    return 0;
+}

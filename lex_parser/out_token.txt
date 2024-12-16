@@ -1,0 +1,281 @@
+ID: my_dist
+reserved keyword: cdouble
+punctuation: :
+special symbol: (
+reserved keyword: cdouble
+ID: x1
+special symbol: )
+special symbol: {
+reserved keyword: return
+reserved keyword: pow
+special symbol: (
+reserved keyword: pow
+special symbol: (
+ID: a
+punctuation: ,
+int: 2
+special symbol: )
+operator: +
+reserved keyword: pow
+special symbol: (
+ID: b
+punctuation: ,
+reserved keyword: pow
+special symbol: (
+int: 4
+punctuation: ,
+double: 0.5
+special symbol: )
+special symbol: )
+punctuation: ,
+double: 0.5
+special symbol: )
+punctuation: ;
+special symbol: }
+ID: my_incentre
+reserved keyword: cdouble
+special symbol: [
+special symbol: ]
+punctuation: :
+special symbol: (
+reserved keyword: cdouble
+ID: A
+special symbol: [
+special symbol: ]
+punctuation: ,
+reserved keyword: cdouble
+ID: B
+special symbol: [
+special symbol: ]
+punctuation: ,
+reserved keyword: cdouble
+ID: C
+special symbol: [
+special symbol: ]
+special symbol: )
+special symbol: {
+reserved keyword: cdouble
+ID: center
+special symbol: [
+int: 2
+special symbol: ]
+punctuation: ;
+reserved keyword: double
+ID: c
+operator: =
+ID: my_dist
+special symbol: (
+ID: A
+special symbol: [
+int: 0
+special symbol: ]
+punctuation: ,
+ID: A
+special symbol: [
+int: 1
+special symbol: ]
+punctuation: ,
+ID: B
+special symbol: [
+int: 0
+special symbol: ]
+punctuation: ,
+ID: B
+special symbol: [
+int: 1
+special symbol: ]
+special symbol: )
+punctuation: ;
+reserved keyword: double
+ID: a
+operator: =
+ID: my_dist
+special symbol: (
+ID: C
+special symbol: [
+int: 0
+special symbol: ]
+punctuation: ,
+ID: C
+special symbol: [
+int: 1
+special symbol: ]
+punctuation: ,
+ID: B
+special symbol: [
+int: 0
+special symbol: ]
+punctuation: ,
+ID: B
+special symbol: [
+int: 1
+special symbol: ]
+special symbol: )
+punctuation: ;
+reserved keyword: double
+ID: b
+operator: =
+ID: my_dist
+special symbol: (
+ID: A
+special symbol: [
+int: 0
+special symbol: ]
+punctuation: ,
+ID: A
+special symbol: [
+int: 1
+special symbol: ]
+punctuation: ,
+ID: C
+special symbol: [
+int: 0
+special symbol: ]
+punctuation: ,
+ID: C
+special symbol: [
+int: 1
+special symbol: ]
+special symbol: )
+punctuation: ;
+ID: center
+special symbol: [
+int: 0
+special symbol: ]
+operator: =
+special symbol: (
+ID: a
+operator: *
+ID: A
+special symbol: [
+int: 0
+special symbol: ]
+operator: +
+ID: b
+operator: *
+ID: B
+special symbol: [
+int: 0
+special symbol: ]
+operator: +
+ID: c
+operator: *
+ID: C
+special symbol: [
+int: 00
+special symbol: ]
+special symbol: )
+operator: /
+special symbol: (
+ID: a
+operator: +
+ID: b
+operator: +
+ID: c
+special symbol: )
+punctuation: ;
+ID: center
+special symbol: [
+int: 1
+special symbol: ]
+operator: =
+special symbol: (
+ID: a
+operator: *
+ID: A
+special symbol: [
+int: 1
+special symbol: ]
+operator: +
+ID: b
+operator: *
+ID: B
+special symbol: [
+int: 1
+special symbol: ]
+operator: +
+ID: c
+operator: *
+ID: C
+special symbol: [
+int: 01
+special symbol: ]
+special symbol: )
+operator: /
+special symbol: (
+ID: a
+operator: +
+ID: b
+operator: +
+ID: c
+special symbol: )
+punctuation: ;
+reserved keyword: return
+ID: center
+punctuation: ;
+special symbol: }
+ID: main
+reserved keyword: int
+punctuation: :
+special symbol: (
+special symbol: )
+special symbol: {
+reserved keyword: cint
+ID: A
+special symbol: [
+int: 2
+special symbol: ]
+punctuation: ;
+reserved keyword: cint
+ID: B
+special symbol: (
+int: 2
+punctuation: ,
+int: 3
+special symbol: )
+special symbol: [
+int: 2
+special symbol: ]
+punctuation: ;
+reserved keyword: cdouble
+ID: C
+special symbol: [
+int: 2
+special symbol: ]
+punctuation: ;
+reserved keyword: choice
+special symbol: (
+ID: my_incentre
+special symbol: (
+ID: A
+punctuation: ,
+ID: B
+punctuation: ,
+ID: C
+special symbol: )
+operator: eq
+ID: get_incentre
+special symbol: (
+ID: A
+punctuation: ,
+ID: B
+punctuation: ,
+ID: C
+special symbol: )
+special symbol: )
+special symbol: {
+reserved keyword: print
+special symbol: (
+string: "Yay! it worked"
+special symbol: )
+punctuation: ;
+special symbol: }
+reserved keyword: default
+special symbol: {
+reserved keyword: print
+special symbol: (
+string: "Something wrong!!!!"
+special symbol: )
+punctuation: ;
+special symbol: }
+special symbol: }

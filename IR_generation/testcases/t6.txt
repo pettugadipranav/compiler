@@ -1,0 +1,16 @@
+det_two_two cdouble : (cdouble a, cdouble b, cdouble c, cdouble d) {
+    return a*d-b*c;
+}
+main int : () {
+    cdouble eq1[3];//ax1+b1y+c1=0
+    cdouble eq2[3];//ax2+b2y+c2=0
+    eq1[0]=(1,0);
+    eq1[1]=(1,0);
+    eq1[2]=(1,0);
+    eq2[0]=(1,0);
+    eq2[1]=(1,0);
+    eq2[2]=(1,0);
+    print("result",eq1[0]+eq1[1]+eq1[2],"hello",eq2[0],"hai");
+    cdouble x=det_two_two(eq1[2],eq1[1],eq2[2],eq2[1])/det_two_two(eq1[0],eq1[1],eq2[0],eq2[1]);
+    cdouble y=det_two_two(eq1[0],eq1[2],eq2[0],eq2[2])/det_two_two(eq1[0],eq1[1],eq2[0],eq2[1]);
+}
